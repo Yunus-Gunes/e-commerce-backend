@@ -8,9 +8,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.http.ResponseEntity;
 import org.springframework.jdbc.core.JdbcTemplate;
 
-import java.sql.Time;
+
 import java.time.LocalDateTime;
-import java.util.Date;
 
 @RestController
 public class YourApplication {
@@ -52,10 +51,10 @@ public class YourApplication {
             categoryRepository.save(category);
 
             Product product = new Product();
-            product.setProductName("Keybord");
+            product.setProductName("Keyboard");
             product.setProductDesc("Q Keybord");
             product.setProductPrice(10F);
-            product.setProductCategory(categoryRepository.getById(6L));
+            product.setProductCategory(categoryRepository.getReferenceById(6L));
             productRepository.save(product);
 
             Customer customer = new Customer();
