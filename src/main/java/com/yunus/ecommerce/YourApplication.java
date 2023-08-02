@@ -65,25 +65,17 @@ public class YourApplication {
             customerRepository.save(customer);
 
             Order order = new Order();
-            order.setCustomer(customerRepository.getById(2L));
+            order.setCustomer(customerRepository.getReferenceById(2L));
             order.setOrderDate(LocalDateTime.now());
             order.setOrderTotal(100F);
             orderRepository.save(order);
 
             OrderDetail orderDetail = new OrderDetail();
-            orderDetail.setOrder(orderRepository.getById(2L));
-            orderDetail.setProduct(productRepository.getById(4L));
+            orderDetail.setOrder(orderRepository.getReferenceById(2L));
+            orderDetail.setProduct(productRepository.getReferenceById(4L));
             orderDetail.setSubTotal(20F);
             orderDetail.setProductPrice(10f);
             orderDetailsRepository.save(orderDetail);
-
-
-            OrderDetail orderDetail2 = new OrderDetail();
-            orderDetail2.setOrder(orderRepository.getById(2L));
-            orderDetail2.setProduct(productRepository.getById(4L));
-            orderDetail2.setSubTotal(20F);
-            orderDetail2.setProductPrice(10f);
-            orderDetailsRepository.save(orderDetail2);
 
 
             return ResponseEntity.status(HttpStatus.CREATED).body("Data added successfully");
