@@ -1,4 +1,4 @@
 
-INSERT into category(category_id, category_name) values (3,'Food');
+INSERT into category( category_name) values ('Food');
 
-INSERT INTO category(category_id, category_name) VALUES(2,'Bratislava');
+INSERT INTO category( category_name) VALUES('Bratislava');
