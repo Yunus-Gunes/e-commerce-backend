@@ -51,7 +51,7 @@ public class ProductServiceImpl implements ProductService {
         Product product = new Product();
         product.setProductName(productCreateDto.getProductName());
         product.setProductDesc(productCreateDto.getProductDesc());
-        Category category = categoryRepository.findById(productCreateDto.getProductCategoryId()).get();
+        Category category = categoryRepository.findById(productCreateDto.getProductCategoryId()).orElse(null);
         product.setProductCategory(category);
         product.setProductPrice(productCreateDto.getProductPrice());
 
