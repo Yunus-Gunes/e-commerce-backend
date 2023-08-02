@@ -78,7 +78,12 @@ public class YourApplication {
             orderDetailsRepository.save(orderDetail);
 
 
-
+            OrderDetail orderDetail2 = new OrderDetail();
+            orderDetail2.setOrder(orderRepository.getById(2L));
+            orderDetail2.setProduct(productRepository.getById(4L));
+            orderDetail2.setSubTotal(20F);
+            orderDetail2.setProductPrice(10f);
+            orderDetailsRepository.save(orderDetail2);
 
 
             return ResponseEntity.status(HttpStatus.CREATED).body("Data added successfully");
