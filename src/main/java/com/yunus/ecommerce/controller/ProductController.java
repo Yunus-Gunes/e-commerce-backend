@@ -28,10 +28,12 @@ public class ProductController {
         return productService.getProducts();
     }
 
-    @GetMapping("/productsbyCategory")
-    public List<ProductDto> getProductsByCategory(@RequestBody long categoryId){
+
+    @GetMapping("/byCategory/{categoryId}")
+    public List<ProductDto> getProductsByCategory(@PathVariable long categoryId){
         return productService.getProductsByCategory(categoryId);
     }
+
 
 
     @PostMapping("/create")

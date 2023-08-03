@@ -49,11 +49,12 @@ public class ProductServiceImpl implements ProductService {
 
 
     public List<ProductDto> getProductsByCategory(long categoryId){
-        List<Product> products = productRepository.findByCategory(categoryId);
+        List<Product> products = productRepository.findByCategoryId(categoryId);
         return products.stream()
                 .map(product -> modelMapper.map(product, ProductDto.class))
                 .collect(Collectors.toList());
     }
+
 
 
 
@@ -62,7 +63,7 @@ public class ProductServiceImpl implements ProductService {
         product.setProductName(productCreateDto.getProductName());
         product.setProductDesc(productCreateDto.getProductDesc());
         Category category = categoryRepository.findById(productCreateDto.getProductCategoryId()).orElse(null);
-        product.setProductCategory(category);
+        product.setCategory_id(category);
         product.setProductPrice(productCreateDto.getProductPrice());
 
 
@@ -83,8 +84,8 @@ public class ProductServiceImpl implements ProductService {
             product.setProductName(productUpdateDto.getProductName());
             product.setProductPrice(productUpdateDto.getProductPrice());
             product.setProductDesc(productUpdateDto.getProductDesc());
-            Category category = categoryRepository.findById(productUpdateDto.getProductCategoryId()).get();
-            product.setProductCategory(category);
+            Category category = categoryRepository.findById(productUpdateDto.getProductCategoryId()).orElse(null);
+            product.setCategory_id(category);
 
             productRepository.save(product);
 

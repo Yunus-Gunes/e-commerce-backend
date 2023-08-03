@@ -31,8 +31,8 @@ public class Product {
     private  Float productPrice;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "product_category",nullable = false)
-    private  Category productCategory;
+    @JoinColumn(name = "category_id",nullable = false)
+    private  Category category_id;
 
 
     @OneToMany(mappedBy = "orderDetailProduct", fetch = FetchType.EAGER)

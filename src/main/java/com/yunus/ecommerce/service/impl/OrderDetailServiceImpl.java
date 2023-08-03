@@ -7,10 +7,8 @@ import com.yunus.ecommerce.dto.OrderDetailDtos.OrderDetailUpdateDto;
 import com.yunus.ecommerce.entity.Order;
 import com.yunus.ecommerce.entity.OrderDetail;
 import com.yunus.ecommerce.entity.Product;
-import com.yunus.ecommerce.mapper.OrderDetailMapper;
 import com.yunus.ecommerce.repository.*;
 import com.yunus.ecommerce.service.OrderDetailService;
-import org.mapstruct.factory.Mappers;
 import org.modelmapper.ModelMapper;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
@@ -27,8 +25,7 @@ public class OrderDetailServiceImpl implements OrderDetailService {
     private final ProductRepository productRepository;
     private final ModelMapper modelMapper;
 
-    OrderDetailMapper orderDetailMapper = Mappers.getMapper(OrderDetailMapper.class);
-    public OrderDetailServiceImpl(OrderDetailsRepository orderDetailRepository, CategoryRepository categoryRepository, CustomerRepository customerRepository, OrderRepository orderRepository, ProductRepository productRepository, ModelMapper modelMapper) {
+    public OrderDetailServiceImpl(OrderDetailsRepository orderDetailRepository, OrderRepository orderRepository, ProductRepository productRepository, ModelMapper modelMapper) {
         this.orderDetailRepository = orderDetailRepository;
         this.orderRepository = orderRepository;
         this.productRepository = productRepository;

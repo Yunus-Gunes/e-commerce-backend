@@ -48,7 +48,7 @@ public class YourApplication {
             product.setProductName("Keyboard");
             product.setProductDesc("Q Keybord");
             product.setProductPrice(10F);
-            product.setProductCategory(categoryRepository.getReferenceById(6L));
+            product.setCategory_id(categoryRepository.getReferenceById(6L));
             productRepository.save(product);
 
             Customer customer = new Customer();
