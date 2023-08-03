@@ -35,7 +35,7 @@ public class Product {
     private  Category productCategory;
 
 
-    @OneToMany(mappedBy = "product", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "orderDetailProduct", fetch = FetchType.EAGER)
     private List<OrderDetail> orderDetails;
 
 }

@@ -9,5 +9,4 @@ import java.util.List;
 public class CategoryUpdateDto {
     private Long categoryId;
     private String categoryName;
-    private List<CategoryProductsDto> products;
 }

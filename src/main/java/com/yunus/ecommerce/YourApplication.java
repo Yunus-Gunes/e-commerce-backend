@@ -2,6 +2,7 @@ package com.yunus.ecommerce;
 
 import com.yunus.ecommerce.entity.*;
 import com.yunus.ecommerce.repository.*;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -12,6 +13,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import java.time.LocalDateTime;
 
 @RestController
+@RequiredArgsConstructor
 public class YourApplication {
 
     private final JdbcTemplate jdbcTemplate;
@@ -21,14 +23,6 @@ public class YourApplication {
     private final OrderDetailsRepository orderDetailsRepository;
     private final ProductRepository productRepository;
 
-    public YourApplication(CategoryRepository categoryRepository, CustomerRepository customerRepository, JdbcTemplate jdbcTemplate, OrderRepository orderRepository, OrderDetailsRepository orderDetailsRepository, ProductRepository productRepository) {
-        this.categoryRepository = categoryRepository;
-        this.customerRepository = customerRepository;
-        this.jdbcTemplate = jdbcTemplate;
-        this.orderRepository = orderRepository;
-        this.orderDetailsRepository = orderDetailsRepository;
-        this.productRepository = productRepository;
-    }
 
     @GetMapping("/health")
     public ResponseEntity<String> checkHealth() {
@@ -71,8 +65,8 @@ public class YourApplication {
             orderRepository.save(order);
 
             OrderDetail orderDetail = new OrderDetail();
-            orderDetail.setOrder(orderRepository.getReferenceById(2L));
-            orderDetail.setProduct(productRepository.getReferenceById(4L));
+            orderDetail.setOrderDetailOrder(orderRepository.getReferenceById(2L));
+            orderDetail.setOrderDetailProduct(productRepository.getReferenceById(4L));
             orderDetail.setSubTotal(20F);
             orderDetail.setProductPrice(10f);
             orderDetailsRepository.save(orderDetail);

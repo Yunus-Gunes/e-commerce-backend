@@ -19,7 +19,7 @@ import java.util.List;
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    //@Column(name = "order_id")
+    @Column(name = "order_id")
     private Long orderId;
 
     @Column(name = "order_date")
@@ -37,7 +37,7 @@ public class Order {
     @JoinColumn(name = "customer_id",nullable = false)
     private Customer customer;
 
-    @OneToMany(mappedBy = "order", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "orderDetailOrder", fetch = FetchType.EAGER)
     private List<OrderDetail> orderDetails;
 
 }

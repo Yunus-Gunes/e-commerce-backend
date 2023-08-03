@@ -1,7 +1,7 @@
 package com.yunus.ecommerce.entity;
 
 public enum OrderStatus {
-    NewOrder ,
+    NewOrder,
     Approved,
     Sent,
     Delivered

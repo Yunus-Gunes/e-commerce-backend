@@ -28,7 +28,12 @@ public class ProductController {
         return productService.getProducts();
     }
 
-    
+    @GetMapping("/productsbyCategory")
+    public List<ProductDto> getProductsByCategory(){
+        return productService.getProductsByCategory();
+    }
+
+
     @PostMapping("/create")
     public ProductDto createAuthor(@RequestBody ProductCreateDto productCreateDto) {
         return productService.createProduct(productCreateDto);

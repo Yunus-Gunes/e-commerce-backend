@@ -46,7 +46,17 @@ public class ProductServiceImpl implements ProductService {
                 .collect(Collectors.toList());
     }
 
-    
+
+
+    public List<ProductDto> getProductsByCategory(long categoryId){
+        List<Product> products = productRepository.findByCategory(categoryId);
+        return products.stream()
+                .map(product -> modelMapper.map(product, ProductDto.class))
+                .collect(Collectors.toList());
+    }
+
+
+
     public ProductDto createProduct(ProductCreateDto productCreateDto){
         Product product = new Product();
         product.setProductName(productCreateDto.getProductName());
@@ -85,7 +95,7 @@ public class ProductServiceImpl implements ProductService {
         }
     }
 
-    public String  deleteProduct(Long productId) {
+    public String  deleteProduct(long productId) {
         Optional<Product> product = productRepository.findById(productId);
 
         if(product.isPresent() ){
