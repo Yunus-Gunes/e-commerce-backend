@@ -35,7 +35,10 @@ public class Product {
     private  Category category_id;
 
 
-    @OneToMany(mappedBy = "orderDetailProduct", fetch = FetchType.EAGER)
-    private List<OrderDetail> orderDetails;
+    @OneToMany(mappedBy = "basketProduct", fetch = FetchType.EAGER)
+    private List<Basket> basketProducts;
+
+    @OneToMany(mappedBy = "orderProduct", fetch = FetchType.EAGER)
+    private List<OrderDetail> order_details;
 
 }

@@ -12,4 +12,9 @@ public interface ProductRepository extends JpaRepository<Product,Long> {
     List<Product> findByCategoryId(@Param("categoryId") long categoryId);
 
 
+    @Query("SELECT productPrice FROM Product WHERE productId = :productId")
+    Long findProductPrice(@Param("productId") float productPrice);
+
+
+
 }

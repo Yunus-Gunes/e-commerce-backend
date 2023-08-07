@@ -18,19 +18,17 @@ public class OrderDetail {
     @Column(name = "order_detail_id")
     private Long orderDetailId;
 
-    @Column(name = "product_price")
-    private Float productPrice;
+    @Column(name = "number_of_product")
+    private Integer numberOfProducts;
 
-    @Column(name = "sub_total")
-    private Float subTotal;
+    @Column(name = "order_product_price")
+    private Float orderProductPrice;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "product_id",nullable = false)
-    private Product orderDetailProduct;
+    @JoinColumn(name = "order_product_id",nullable = false)
+    private  Product orderProduct;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "order_id",nullable = false)
-    private Order orderDetailOrder;
-
-
+    private  Order orderDetailOrderId;
 }

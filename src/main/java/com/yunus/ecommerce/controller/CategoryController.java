@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping(value = "/category")
 public class CategoryController {
@@ -28,17 +29,17 @@ public class CategoryController {
     }
 
     @PostMapping("/create")
-    public CategoryDto createAuthor(@RequestBody CategoryCreateDto categoryCreateDto) {
+    public CategoryDto createCategory(@RequestBody CategoryCreateDto categoryCreateDto) {
         return categoryService.createCategory(categoryCreateDto);
     }
 
     @PutMapping("/update")
-    public CategoryDto updateAuthor(@RequestBody CategoryUpdateDto categoryUpdateDto) {
+    public CategoryDto updateCategory(@RequestBody CategoryUpdateDto categoryUpdateDto) {
         return categoryService.updateCategory(categoryUpdateDto);
     }
 
     @DeleteMapping("/delete")
-    public String  deleteAuthor(@RequestParam long categoryId) {
+    public String  deleteCategory(@RequestParam long categoryId) {
         return categoryService.deleteCategory(categoryId);
     }
 

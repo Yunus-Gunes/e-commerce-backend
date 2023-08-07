@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping(value = "/product")
 public class ProductController {
@@ -18,7 +19,6 @@ public class ProductController {
     public ProductController(ProductService productService) {
         this.productService = productService;
     }
-
 
     @GetMapping("/{productId}")
     public ProductDto getProductById(@PathVariable long productId) {
@@ -30,26 +30,23 @@ public class ProductController {
         return productService.getProducts();
     }
 
-
     @GetMapping("/byCategory/{categoryId}")
     public List<ProductDto> getProductsByCategory(@PathVariable long categoryId){
         return productService.getProductsByCategory(categoryId);
     }
 
-
-
     @PostMapping("/create")
-    public ProductDto createAuthor(@RequestBody ProductCreateDto productCreateDto) {
+    public ProductDto createProduct(@RequestBody ProductCreateDto productCreateDto) {
         return productService.createProduct(productCreateDto);
     }
 
     @PutMapping("/update")
-    public ProductDto updateAuthor(@RequestBody ProductUpdateDto productUpdateDto) {
+    public ProductDto updateProduct(@RequestBody ProductUpdateDto productUpdateDto) {
         return productService.updateProduct(productUpdateDto);
     }
 
     @DeleteMapping("/delete")
-    public String  deleteAuthor(@RequestParam long productId) {
+    public String  deleteProduct(@RequestParam long productId) {
         return productService.deleteProduct(productId);
     }
 

@@ -1,6 +1,5 @@
 package com.yunus.ecommerce.controller;
 
-import com.yunus.ecommerce.dto.OrderDtos.OrderCreateDto;
 import com.yunus.ecommerce.dto.OrderDtos.OrderDto;
 import com.yunus.ecommerce.dto.OrderDtos.OrderUpdateDto;
 import com.yunus.ecommerce.entity.OrderStatus;
@@ -9,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping(value = "/order")
 public class OrderController {
@@ -30,17 +30,17 @@ public class OrderController {
     }
 
     @PostMapping("/create")
-    public OrderDto createAuthor(@RequestBody OrderCreateDto orderCreateDto) {
-        return orderService.createOrder(orderCreateDto);
+    public OrderDto createOrder(@RequestParam long userId) {
+        return orderService.createOrder(userId);
     }
 
     @PutMapping("/update")
-    public OrderDto updateAuthor(@RequestBody OrderUpdateDto orderUpdateDto) {
+    public OrderDto updateOrder(@RequestBody OrderUpdateDto orderUpdateDto) {
         return orderService.updateOrder(orderUpdateDto);
     }
 
     @DeleteMapping("/delete")
-    public String  deleteAuthor(@RequestParam long orderId) {
+    public String  deleteOrder(@RequestParam long orderId) {
         return orderService.deleteOrder(orderId);
     }
 

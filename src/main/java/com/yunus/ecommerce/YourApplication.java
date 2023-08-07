@@ -18,9 +18,9 @@ public class YourApplication {
 
     private final JdbcTemplate jdbcTemplate;
     private final CategoryRepository categoryRepository;
-    private final CustomerRepository customerRepository;
+    private final UserRepository userRepository;
     private final OrderRepository orderRepository;
-    private final OrderDetailsRepository orderDetailsRepository;
+    private final BasketRepository basketsRepository;
     private final ProductRepository productRepository;
 
 
@@ -51,25 +51,28 @@ public class YourApplication {
             product.setCategory_id(categoryRepository.getReferenceById(6L));
             productRepository.save(product);
 
-            Customer customer = new Customer();
-            customer.setCustomerEmail("yunus@gmail.com.tr");
-            customer.setCustomerName("Yunus");
-            customer.setCustomerAddress("Yozgat");
-            customer.setCustomerPassword("123");
-            customerRepository.save(customer);
+            User user = new User();
+            user.setUserEmail("yunus@gmail.com.tr");
+            user.setUserName("Yunus");
+            user.setUserAddress("Yozgat");
+            user.setUserPassword("123");
+            userRepository.save(user);
 
             Order order = new Order();
-            order.setCustomer(customerRepository.getReferenceById(2L));
+            order.setUser(userRepository.getReferenceById(2L));
             order.setOrderDate(LocalDateTime.now());
             order.setOrderTotal(100F);
             orderRepository.save(order);
 
-            OrderDetail orderDetail = new OrderDetail();
-            orderDetail.setOrderDetailOrder(orderRepository.getReferenceById(2L));
-            orderDetail.setOrderDetailProduct(productRepository.getReferenceById(4L));
-            orderDetail.setSubTotal(20F);
-            orderDetail.setProductPrice(10f);
-            orderDetailsRepository.save(orderDetail);
+            /*
+            Basket basket = new Basket();
+            basket.setBasketOrder(orderRepository.getReferenceById(2L));
+            basket.setBasketProduct(productRepository.getReferenceById(4L));
+            basket.setSubTotal(20F);
+            basket.setProductPrice(10f);
+            basketsRepository.save(basket);
+
+             */
 
 
             return ResponseEntity.status(HttpStatus.CREATED).body("Data added successfully");

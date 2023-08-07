@@ -1,7 +1,5 @@
 package com.yunus.ecommerce.dto.OrderDtos;
 
-import com.yunus.ecommerce.dto.OrderDetailDtos.OrderDetailDto;
-import com.yunus.ecommerce.entity.OrderDetail;
 import com.yunus.ecommerce.entity.OrderStatus;
 import lombok.Data;
 
@@ -15,6 +13,6 @@ public class OrderDto {
     private LocalDateTime orderDate;
     private Float orderTotal;
     private OrderStatus orderStatus;
-    private Long customerId;
-    private List<OrderOrderDetailsDto> orderDetails;
+    private Long userId;
+    private List<Order_OrderDetailDto> orderDetail;
 }

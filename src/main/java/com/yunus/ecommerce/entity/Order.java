@@ -6,7 +6,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.sql.Date;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -34,10 +33,10 @@ public class Order {
 
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "customer_id",nullable = false)
-    private Customer customer;
+    @JoinColumn(name = "user_id",nullable = false)
+    private User user;
 
-    @OneToMany(mappedBy = "orderDetailOrder", fetch = FetchType.EAGER)
-    private List<OrderDetail> orderDetails;
+    @OneToMany(mappedBy = "orderDetailOrderId", fetch = FetchType.EAGER)
+    private List<OrderDetail> orderDetail;
 
 }

@@ -3,9 +3,9 @@ package com.yunus.ecommerce.dto.OrderDtos;
 import lombok.Data;
 
 @Data
-public class OrderOrderDetailsDto {
+public class Order_OrderDetailDto {
     private Long orderDetailId;
-    private Float productPrice;
-    private Float subTotal;
+    private Float orderDetailProductPrice;
+    private Integer numberOfOrderProducts;
     private Long productId;
 }
